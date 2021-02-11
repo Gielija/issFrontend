@@ -1,4 +1,4 @@
-export interface Pid {
+export class Pid {
     kp: number;
     Ti: number;
     Td: number;

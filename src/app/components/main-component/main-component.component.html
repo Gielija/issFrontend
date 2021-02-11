@@ -11,10 +11,9 @@
                     <option *ngFor="let type of possibleRegulatorTypes" [value]="type">{{ type }}</option>
                 </select>
             </div>
-          <model></model>
+          <model (onModelParametersPicked)="getModelParameters($event)"></model>
           <!-- <div *ngIf="regulatorType === 'PID'"> -->
-            <!-- <pid class="pid" (onPidPicked)="getPid($event)"></pid> -->
-            <pid class="pid" ></pid>
+            <pid class="pid" (onPidPicked)="getPid($event)"></pid>
           <!-- </div> -->
           <div *ngIf="regulatorType === 'FUZZY'">
             <fuzzy></fuzzy>

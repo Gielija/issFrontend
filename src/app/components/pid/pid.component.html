@@ -2,19 +2,19 @@
     <p>Parametry PID:</p>
     <div class="form-group">
       <label>kp:</label>
-        <input [(ngModel)]="pid.kp" placeholder="kp" type="number"/>
+        <input [(ngModel)]="pid.kp" placeholder="kp" type="number" (change)="pickPid()"/>
     </div>
-    <!-- <div class="form-group">
+    <div class="form-group">
       <label>Ti:
     </label>
-        <input [(ngModel)]="pid.Ti" placeholder="Ti"/>
+        <input [(ngModel)]="pid.Ti" placeholder="Ti" type="number" (change)="pickPid()"/>
     </div>
     <div class="form-group">
       <label>Td:
     </label>
-        <input [(ngModel)]="pid.Td" placeholder="Td"/>
+        <input [(ngModel)]="pid.Td" placeholder="Td" type="number" (change)="pickPid()"/>
       
-    </div> -->
+    </div>
 </div>
 
 

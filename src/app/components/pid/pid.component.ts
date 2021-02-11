@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import {Pid} from '../../interfaces/pid'
+import {Pid} from '../../classes/pid'
 
 @Component({
   selector: 'pid',
@@ -8,19 +8,21 @@ import {Pid} from '../../interfaces/pid'
 })
 export class PidComponent implements OnInit {
 
-  @Input() pid: Pid
+  @Input() pid: Pid;
 
-  // @Output() onPidPicked = new EventEmitter<any>();
+  @Output() onPidPicked = new EventEmitter<any>();
 
-  constructor() { }
+  constructor() { 
+    this.pid = new Pid()
+  }
 
   ngOnInit(): void {
    
   }
 
-  // public getPID(pid: any): void {
-  //   console.log("getPID")
-  //   this.onPidPicked.emit(pid);
-  // }
+  public pickPid(): void {
+    console.log("getPID")
+    this.onPidPicked.emit(this.pid);
+  }
 
 }

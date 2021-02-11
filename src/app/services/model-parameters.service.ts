@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ModelParameters } from '../interfaces/modelParameters';
+import { ModelParameters } from '../classes/modelParameters';
 
 @Injectable({
   providedIn: 'root'

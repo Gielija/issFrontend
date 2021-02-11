@@ -1,4 +1,4 @@
-export interface ModelState {
+export class ModelState {
    inflow: number;
    waterLevel: number;
 }

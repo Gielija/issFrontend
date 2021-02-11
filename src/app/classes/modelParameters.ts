@@ -1,4 +1,4 @@
-export interface ModelParameters {
+export class ModelParameters {
    baseField: number;
    setLevel: number;
 }

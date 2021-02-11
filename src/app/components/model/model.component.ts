@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ModelParameters } from '../../interfaces/modelParameters'
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ModelParameters } from '../../classes/modelParameters'
 
 @Component({
   selector: 'model',
@@ -10,11 +10,17 @@ export class ModelComponent implements OnInit {
 
   @Input() modelParameters: ModelParameters;
 
+  @Output() onModelParametersPicked = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
-    // this.modelParameters.setLevel = 1;
-    // this.modelParameters.baseField = 1.5;
+    this.modelParameters = new ModelParameters()
+  }
+
+  public pickModelParameters(): void {
+    console.log("pickModelParameters")
+    this.onModelParametersPicked.emit(this.modelParameters);
   }
 
 }
