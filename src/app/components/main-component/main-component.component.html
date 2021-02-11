@@ -1,0 +1,29 @@
+<div class="main-component">
+    <div class="row">
+        <div class="column" style="background-color:#aaa;">
+            <div class="form-group">
+                <label for="regulator">Wybierz regulator:</label>
+                <select 
+                    name="regulatorType" 
+                    id="regulator" 
+                    class="form-control"
+                    [(ngModel)]="regulatorType">
+                    <option *ngFor="let type of possibleRegulatorTypes" [value]="type">{{ type }}</option>
+                </select>
+            </div>
+          <model></model>
+          <!-- <div *ngIf="regulatorType === 'PID'"> -->
+            <!-- <pid class="pid" (onPidPicked)="getPid($event)"></pid> -->
+            <pid class="pid" ></pid>
+          <!-- </div> -->
+          <div *ngIf="regulatorType === 'FUZZY'">
+            <fuzzy></fuzzy>
+          </div>
+        </div>
+        <div class="column" style="background-color:#bbb;">
+          <!-- <simulation [hero]="selectedHero"></simulation> -->
+          <simulation></simulation>
+        </div>
+      </div>
+</div>
+
