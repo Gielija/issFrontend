@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { PidService } from 'src/app/services/pid.service';
 import {Pid} from '../../classes/pid'
 
 @Component({
@@ -12,12 +13,16 @@ export class PidComponent implements OnInit {
 
   @Output() onPidPicked = new EventEmitter<any>();
 
-  constructor() { 
+  constructor(private pidService: PidService) { 
     this.pid = new Pid()
   }
 
   ngOnInit(): void {
-   
+    this.getPid()
+  }
+
+  getPid(): void {
+    this.pid = this.pidService.getPid();
   }
 
   public pickPid(): void {

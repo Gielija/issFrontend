@@ -8,7 +8,14 @@ export class ModelParametersService {
 
   modelParameters: ModelParameters;
 
-  constructor() { }
+  constructor() { 
+    this.modelParameters = new ModelParameters()
+    this.modelParameters.baseField = 1
+    this.modelParameters.setLevel = 1
+  }
 
+  getModelParameters(): ModelParameters {
+    return this.modelParameters;
+  }
   
 }

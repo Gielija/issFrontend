@@ -1,4 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ModelState } from 'src/app/classes/modelState';
+import { ModelParametersService } from 'src/app/services/model-parameters.service';
+import { ModelStateService } from 'src/app/services/model-state.service';
 import { ModelParameters } from '../../classes/modelParameters'
 
 @Component({
@@ -12,10 +15,16 @@ export class ModelComponent implements OnInit {
 
   @Output() onModelParametersPicked = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private modelParametersService: ModelParametersService) {
+
+   }
 
   ngOnInit(): void {
-    this.modelParameters = new ModelParameters()
+   this.getModelParameters();
+  }
+
+  public getModelParameters() {
+    this.modelParameters = this.modelParametersService.getModelParameters();
   }
 
   public pickModelParameters(): void {
