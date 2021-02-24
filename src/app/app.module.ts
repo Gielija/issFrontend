@@ -10,6 +10,8 @@ import { MainComponentComponent } from '././components/main-component/main-compo
 import { ModelComponent } from '././components/model/model.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -18,16 +20,17 @@ import { HttpClientModule } from '@angular/common/http';
     PidComponent,
     FuzzyComponent,
     MainComponentComponent,
-    ModelComponent
+    ModelComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   exports: [
-    // PidComponent
   ],
   providers: [  ],
   bootstrap: [AppComponent]
