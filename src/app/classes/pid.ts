@@ -1,5 +1,5 @@
 export class Pid {
-    kp: number;
-    Ti: number;
-    Td: number;
-  }
+  kp: number;
+  ti: number;
+  td: number;
+}

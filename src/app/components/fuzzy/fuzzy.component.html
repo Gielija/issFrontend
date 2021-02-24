@@ -1,1 +1,26 @@
-<p>fuzzy works!</p>
+<div class="form-group">
+    <label for="regulator">Wybierz metodę:</label>
+    <select 
+        name="regulatorMethod" 
+        id="regulatorMethod" 
+        class="form-control"
+        [(ngModel)]="method"
+    >
+        <option *ngFor="let method of possibleMethods" [value]="method">{{ method }} </option>
+</select>
+</div>
+<label for="regulator">Baza reguł:</label>
+<table style="width:100%; margin-top: 10pt;">
+    <tr>
+      <th>e | ce</th>
+      <th *ngFor="let set of fuzzySets">
+        {{set}}
+      </th>
+    </tr>  
+    <tr  *ngFor='let in of [0, 1, 2, 3, 4, 5, 6];let i = index'>
+        <th>{{fuzzySets[i]}}</th>
+        <td *ngFor='let in of [0, 1, 2, 3, 4, 5, 6];let j = index'>
+            <span (keyup)="changeValue(i, j, $event)" (blur)="updateConclusions(i, j, $event)" contenteditable="true"> {{conclusions[i][j]}}</span>       
+        </td>
+    </tr>
+</table>

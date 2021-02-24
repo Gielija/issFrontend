@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
 import { ModelParameters } from '../classes/modelParameters';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelParametersService {
 
-  modelParameters: ModelParameters;
-
-  constructor() { 
-    this.modelParameters = new ModelParameters()
-    this.modelParameters.baseField = 1
-    this.modelParameters.setLevel = 1
+  private url = '/api/modelParameters';
+  private httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',
+     })
+     
+  };
+  
+  constructor(private http: HttpClient) { 
   }
 
-  getModelParameters(): ModelParameters {
-    return this.modelParameters;
+  getModelParameters(): Observable<ModelParameters> {
+    return this.http.get<ModelParameters>(this.url);
+  }
+
+  setModelParameters(modelParameters: ModelParameters): void {
+    console.log("setModelParameters service")
+    this.http.post<ModelParameters>(this.url, modelParameters, this.httpOptions).subscribe(result => console.log(result));
   }
   
 }

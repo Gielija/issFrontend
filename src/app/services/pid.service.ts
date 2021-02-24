@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Pid } from '../classes/pid';
 import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PidService {
 
-  pid: Pid;
+  private url = '/api/pidParameters';
 
-  constructor() { 
-    this.pid = new Pid()
-    this.pid.kp = 1;
-    this.pid.Ti = 1;
-    this.pid.Td = 1;
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
+  constructor(private http: HttpClient) { 
+    
   }
 
-  getPid(): Pid {
-    return this.pid;
+  getPid(): Observable<Pid> {
+    return this.http.get<Pid>(this.url);
+  }
+
+  setPid(pid: Pid): void {
+    this.http.post<Pid>(this.url, pid, this.httpOptions).subscribe();
   }
 }

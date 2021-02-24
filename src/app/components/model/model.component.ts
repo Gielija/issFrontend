@@ -23,13 +23,22 @@ export class ModelComponent implements OnInit {
    this.getModelParameters();
   }
 
+  // public getModelParameters() {
+  //   this.modelParameters = this.modelParametersService.getModelParameters();
+  // }
+
+  
+
   public getModelParameters() {
-    this.modelParameters = this.modelParametersService.getModelParameters();
+    this.modelParametersService.getModelParameters()
+    .subscribe(modelParameters => this.modelParameters = modelParameters);
   }
 
   public pickModelParameters(): void {
-    console.log("pickModelParameters")
-    this.onModelParametersPicked.emit(this.modelParameters);
+    console.log("pickModelParameters:" + this.modelParameters.setLevel);
+    this.modelParametersService.setModelParameters(this.modelParameters);
+    // this.onModelParametersPicked.emit(this.modelParameters);
+
   }
 
 }

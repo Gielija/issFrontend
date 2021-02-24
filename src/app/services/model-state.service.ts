@@ -1,4 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ModelState } from '../classes/modelState';
 
 @Injectable({
@@ -6,15 +8,27 @@ import { ModelState } from '../classes/modelState';
 })
 export class ModelStateService {
   
-  modelState: ModelState
+  private url = '/api/modelState';
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json',
+    responseType: 'text' })
+  };
 
-  constructor() { 
-    this.modelState = new ModelState()
-    this.modelState.inflow = 1
-    this.modelState.waterLevel = 1
+  constructor(private http: HttpClient) { 
   }
 
-  getModelState(): ModelState {
-    return this.modelState;
+  getModelState(): Observable<ModelState> {
+    return this.http.get<ModelState>(this.url);
   }
+
+  setModelState(modelState: ModelState): void {
+    console.log("setModelState service")
+    this.http.post<ModelState>(this.url, modelState, this.httpOptions).subscribe(result => console.log(result));
+  }
+
+  setCurrentRegulator(currentRegulator: string): void {
+    console.log("setModelState service")
+    this.http.post<ModelState>(this.url, {"currentRegulator": currentRegulator.toLowerCase()}, this.httpOptions).subscribe(result => console.log(result));
+  }
+
 }

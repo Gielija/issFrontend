@@ -18,16 +18,17 @@ export class PidComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPid()
+    this.getPid();
   }
 
   getPid(): void {
-    this.pid = this.pidService.getPid();
+    this.pidService.getPid()
+    .subscribe(pid => this.pid = pid);
   }
 
   public pickPid(): void {
     console.log("getPID")
-    this.onPidPicked.emit(this.pid);
+    this.pidService.setPid(this.pid);
   }
 
 }
