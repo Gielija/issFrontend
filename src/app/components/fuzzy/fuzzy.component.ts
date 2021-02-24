@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BaseOfRules } from 'src/app/classes/baseOfRules';
 import { Fuzzy } from 'src/app/classes/fuzzy';
 import { FuzzyService } from 'src/app/services/fuzzy.service';
 
@@ -30,16 +29,9 @@ export class FuzzyComponent implements OnInit {
   constructor(private fuzzyService: FuzzyService) { }
 
   ngOnInit(): void {
-    // this.fuzzyService.getFuzzyHttp()
-    // .subscribe(fuzzy => this.fuzzy = fuzzy);
-    // this.fuzzy = this.fuzzyService.getFuzzy();
     this.fuzzy = new Fuzzy();
-    // let baseOfRules = new BaseOfRules();
     this.fuzzy.fromTable(this.conclusions);
     this.fuzzyService.setBaseOfRules(this.fuzzy);
-      
-     
-    
   }
 
   changeValue(id: number, property: string, event: any) {
@@ -57,7 +49,6 @@ export class FuzzyComponent implements OnInit {
 
   public pickFuzzy(): void {
     console.log("getFuzzy")
-    // this.onPidPicked.emit(this.pid);
     this.fuzzyService.setBaseOfRules(this.fuzzy);
   }
 

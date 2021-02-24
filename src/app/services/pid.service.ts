@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pid } from '../classes/pid';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -14,8 +14,7 @@ export class PidService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) { 
-    
+  constructor(private http: HttpClient) {  
   }
 
   getPid(): Observable<Pid> {

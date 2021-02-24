@@ -13,19 +13,15 @@
                 </select>
             </div>
           <model>
-          <!-- (onModelParametersPicked)="getModelParameters($event)"> -->
         </model>
           <div *ngIf="currentRegulator === 'PID'">
             <pid class="pid"></pid>
-            <!-- (onPidPicked)="getPid($event)" -->
-            <!-- </pid> -->
           </div>
           <div *ngIf="currentRegulator === 'FUZZY'">
             <fuzzy></fuzzy>
           </div>
         </div>
         <div class="column" style="background-color:#bbb;">
-          <!-- <simulation [setLevel]="modelParameters.setLevel"></simulation> -->
           <simulation id="simulation"></simulation>
         </div>
       </div>

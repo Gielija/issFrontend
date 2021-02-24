@@ -1,11 +1,8 @@
-import { OnInit, Component, ElementRef, Input, Output, HostListener, NgZone, OnDestroy } from '@angular/core';
+import { OnInit, Component, ElementRef, Input, NgZone } from '@angular/core';
 import { Application, Graphics } from 'pixi.js';
-import {Observable, timer} from 'rxjs';
 import { ModelParametersService } from 'src/app/services/model-parameters.service';
 import { interval } from 'rxjs';
-import { map, mergeMap, switchMap } from 'rxjs/operators';
-import { SimulationService } from 'src/app/services/simulation.service';
-import { ModelParameters } from 'src/app/classes/modelParameters';
+import { switchMap } from 'rxjs/operators';
 import { ModelStateService } from 'src/app/services/model-state.service';
 
 declare var PIXI:any;
@@ -72,7 +69,6 @@ export class SimulationComponent implements OnInit {
     app.renderer.backgroundColor = 0xFFFFFF;
 
     console.log("simulation start")
-    // app.renderer.autoResize = true;
 
     this.stage = app.stage
     let waterTank = new Graphics();
@@ -112,10 +108,6 @@ export class SimulationComponent implements OnInit {
     outflowPipe.y = outflowY;
     this.stage.addChild(outflowPipe);
 
-    // let outflowText = new PIXI.Text(this.outflow, {fontFamily : 'Arial', fontSize: this.fontSize, fill : 0x000000, align : 'center'});
-    // outflowText.position.set(outflowX + 0.3 * inflowX, outflowY - this.fontSize / 2 + this.pipeDimension1)
-    // this.stage.addChild(outflowText)
-
    this.createSetLevel();
    this.stage.addChild(this.setH);
    let hWidth = this.pipeDimension1;
@@ -147,7 +139,6 @@ export class SimulationComponent implements OnInit {
   }
 
   updateSimulation(): void {
-    // console.log("updateSimulation");
     this.stage.removeChild(this.water);
     this.createWater()
     this.stage.addChild(this.water);
@@ -180,6 +171,9 @@ export class SimulationComponent implements OnInit {
     let hWidth = this.pipeDimension1;
     let hHeight = this.pipeDimention2 / 3;
     let setLevelInSimulation = this.setLevel / this.maxLevel * this.tankHeight;
+    if (setLevelInSimulation > this.tankHeight) {
+      setLevelInSimulation = this.tankHeight;
+    }
     console.log("setLevelInSimulation = " + setLevelInSimulation)
     let setH = new Graphics();
     setH.lineStyle(4, 0x000000, 0);
@@ -189,9 +183,7 @@ export class SimulationComponent implements OnInit {
     setH.x = this.waterTankX - (hWidth / 2);
     setH.y = this.waterTankY + this.tankHeight - setLevelInSimulation;
     this.setH = setH;
-    
   }
-
 
   private createInflowText(inflowX: number, inflowY: number) {
     let inflowText = new PIXI.Text(this.inflow, { fontFamily: 'Arial', fontSize: this.fontSize, fill: 0x000000, align: 'center' });

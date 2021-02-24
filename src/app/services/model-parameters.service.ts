@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ModelParameters } from '../classes/modelParameters';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,6 @@ export class ModelParametersService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
      })
-     
   };
   
   constructor(private http: HttpClient) { 

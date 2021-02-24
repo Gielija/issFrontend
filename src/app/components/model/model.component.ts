@@ -16,18 +16,11 @@ export class ModelComponent implements OnInit {
   @Output() onModelParametersPicked = new EventEmitter<any>();
 
   constructor(private modelParametersService: ModelParametersService) {
-
    }
 
   ngOnInit(): void {
    this.getModelParameters();
   }
-
-  // public getModelParameters() {
-  //   this.modelParameters = this.modelParametersService.getModelParameters();
-  // }
-
-  
 
   public getModelParameters() {
     this.modelParametersService.getModelParameters()
@@ -37,8 +30,6 @@ export class ModelComponent implements OnInit {
   public pickModelParameters(): void {
     console.log("pickModelParameters:" + this.modelParameters.setLevel);
     this.modelParametersService.setModelParameters(this.modelParameters);
-    // this.onModelParametersPicked.emit(this.modelParameters);
-
   }
 
 }
