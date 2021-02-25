@@ -21,4 +21,12 @@ export class MainComponentComponent implements OnInit {
     this.modelStateService.setCurrentRegulator(this.currentRegulator);
   }
 
+  public emptyTank(): void {
+    this.modelStateService.setWaterLevel(0);
+  }
+
+  public followingDemo(): void {
+    this.modelStateService.turnOnFollowingDemo();
+  }
+
 }

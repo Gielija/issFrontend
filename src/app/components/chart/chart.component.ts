@@ -3,6 +3,7 @@ import { ChartDataSets, ChartOptions } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 import { interval } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { ModelParametersService } from 'src/app/services/model-parameters.service';
 import { ModelStateService } from 'src/app/services/model-state.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class ChartComponent implements OnInit {
 
   lineChartData: ChartDataSets[] = [
     { data: [], label: 'Poziom wody' },
+    { data: [], label: 'Poziom zadany' }
   ];
 
   lineChartLabels: Label[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
@@ -34,8 +36,7 @@ export class ChartComponent implements OnInit {
         },
         ticks: {
           min: 0,
-          max: 7,
-          // stepSize: 0.001
+          max: 7
       }
       }],
       xAxes: [{
@@ -50,15 +51,19 @@ export class ChartComponent implements OnInit {
   lineChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(25, 118, 210, 0.28)',
+      backgroundColor: 'rgba(25, 118, 210, 0.28)'
     },
+    {
+      borderColor: 'red',
+      backgroundColor: 'rgba(255, 0, 0, 0.28)'
+    }
   ];
 
   lineChartLegend = true;
   lineChartPlugins = [];
   lineChartType = 'line';
 
-  constructor(private modelStateService: ModelStateService) { }
+  constructor(private modelStateService: ModelStateService, private modelParametersService: ModelParametersService) { }
 
   ngOnInit(): void {
     interval(1_000).pipe(
@@ -71,6 +76,16 @@ export class ChartComponent implements OnInit {
         this.lineChartLabels.shift();
         this.second++;
         this.lineChartLabels.push(this.second.toString());
+      }
+    });
+
+    interval(1_000).pipe(
+      switchMap(() => this.modelParametersService.getModelParameters())
+    ).subscribe(result => {
+      this.lineChartData[1].data.push(result.setLevel);
+      if (this.lineChartData[1].data.length > 31) {
+        this.lineChartData[1].data.shift();
+        this.lineChartLabels.shift();
       }
     });
   }

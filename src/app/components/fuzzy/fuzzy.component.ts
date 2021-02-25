@@ -9,8 +9,6 @@ import { FuzzyService } from 'src/app/services/fuzzy.service';
 })
 export class FuzzyComponent implements OnInit {
 
-  @Input() method: string;
-  possibleMethods: string[] = ["Metoda środka ciężkości", "Metoda środka maksimum"];
   fuzzySets: string [] = ["DU", "ŚU", "MU", "Z", "MD", "ŚD", "DD"];
  
   @Input() conclusions: string [][] = [

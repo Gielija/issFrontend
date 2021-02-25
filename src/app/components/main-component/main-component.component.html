@@ -20,6 +20,12 @@
           <div *ngIf="currentRegulator === 'FUZZY'">
             <fuzzy></fuzzy>
           </div>
+          <div>
+            <button type="button" class="btn btn-primary" (click)="emptyTank()">Opróżnij zbiornik</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary" (click)="followingDemo()">Włącz prezentację nadązania</button>
+          </div>
         </div>
         <div class="column" style="background-color:#bbb;">
           <simulation id="simulation"></simulation>

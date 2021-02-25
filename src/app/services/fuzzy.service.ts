@@ -24,11 +24,4 @@ export class FuzzyService {
   setBaseOfRules(fuzzy: Fuzzy): void {
     this.http.post<Fuzzy>(this.url, fuzzy, this.httpOptions).subscribe();
   }
-
-  private toBaseOfRules(tbl: string[][]): BaseOfRules {
-    return new BaseOfRules();
-
-    let baseOfRules = new BaseOfRules();
-
-  }
 }

@@ -31,4 +31,12 @@ export class ModelStateService {
     this.http.post<ModelState>(this.url, {"currentRegulator": currentRegulator.toLowerCase()}, this.httpOptions).subscribe(result => console.log(result));
   }
 
+  setWaterLevel(waterLevel: number): void {
+    this.http.post<ModelState>(this.url, {"waterLevel": waterLevel.toString()}, this.httpOptions).subscribe(result => console.log(result));
+  }
+
+  turnOnFollowingDemo(): void {
+    this.http.post<ModelState>(this.url, {"autoChangeSetSignal": true}, this.httpOptions).subscribe(result => console.log(result));
+  }
+
 }
