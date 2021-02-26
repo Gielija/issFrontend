@@ -36,7 +36,13 @@ export class ModelStateService {
   }
 
   turnOnFollowingDemo(): void {
+    console.log("autoChangeSetSignal = true")
     this.http.post<ModelState>(this.url, {"autoChangeSetSignal": true}, this.httpOptions).subscribe(result => console.log(result));
+  }
+
+  turnOffFollowingDemo(): void {
+    console.log("autoChangeSetSignal = false")
+    this.http.post<ModelState>(this.url, {"autoChangeSetSignal": false}, this.httpOptions).subscribe(result => console.log(result));
   }
 
 }

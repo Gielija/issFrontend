@@ -9,16 +9,16 @@ import { FuzzyService } from 'src/app/services/fuzzy.service';
 })
 export class FuzzyComponent implements OnInit {
 
-  fuzzySets: string [] = ["DU", "ŚU", "MU", "Z", "MD", "ŚD", "DD"];
+  fuzzySets: string [] = ["DU", "SU", "MU", "Z", "MD", "SD", "DD"];
  
   @Input() conclusions: string [][] = [
-    ["DU", "DU", "DU", "DU", "ŚU", "MU", "Z"],
-    ["DU", "DU", "DU", "ŚU", "MU", "Z", "MD"],
-    ["DU", "DU", "ŚU", "MU", "Z", "MD", "ŚD"],
-    ["DU", "ŚU", "MU", "Z", "MD", "ŚD", "DD"],
-    ["ŚU", "MU", "Z", "MD", "ŚD", "DD", "DD"],
-    ["MU", "Z", "MD", "ŚD", "DD", "DD", "DD"],
-    ["Z", "MD", "ŚD", "DD", "DD", "DD", "DD"],
+    ["DU", "DU", "DU", "DU", "SU", "MU", "Z"],
+    ["DU", "DU", "DU", "SU", "MU", "Z", "MD"],
+    ["DU", "DU", "SU", "MU", "Z", "MD", "SD"],
+    ["DU", "SU", "MU", "Z", "MD", "SD", "DD"],
+    ["SU", "MU", "Z", "MD", "SD", "DD", "DD"],
+    ["MU", "Z", "MD", "SD", "DD", "DD", "DD"],
+    ["Z", "MD", "SD", "DD", "DD", "DD", "DD"],
   ];
   
   @Input() fuzzy: Fuzzy;
@@ -38,11 +38,14 @@ export class FuzzyComponent implements OnInit {
 
   updateConclusions(rowId: number, colId: string, event: any) {
     const editField = event.target.textContent;
-    this.conclusions[rowId][colId] = editField;
-
-    console.log("conclusions:" + this.conclusions)
-    this.fuzzy.fromTable(this.conclusions);
-    this.fuzzyService.setBaseOfRules(this.fuzzy);
+    if (this.fuzzySets.indexOf(editField) > -1) {
+      this.conclusions[rowId][colId] = editField;
+      this.fuzzy.fromTable(this.conclusions);
+      this.fuzzyService.setBaseOfRules(this.fuzzy);
+    } else {
+      event.target.textContent = this.conclusions[rowId][colId]
+    }
+   
   }
 
   public pickFuzzy(): void {

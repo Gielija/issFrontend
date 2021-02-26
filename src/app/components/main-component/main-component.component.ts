@@ -25,8 +25,12 @@ export class MainComponentComponent implements OnInit {
     this.modelStateService.setWaterLevel(0);
   }
 
-  public followingDemo(): void {
+  public followingDemoStart(): void {
     this.modelStateService.turnOnFollowingDemo();
+  }
+
+  public followingDemoStop(): void {
+    this.modelStateService.turnOffFollowingDemo();
   }
 
 }

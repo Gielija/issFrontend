@@ -77,17 +77,22 @@ export class ChartComponent implements OnInit {
         this.second++;
         this.lineChartLabels.push(this.second.toString());
       }
-    });
-
-    interval(1_000).pipe(
-      switchMap(() => this.modelParametersService.getModelParameters())
-    ).subscribe(result => {
       this.lineChartData[1].data.push(result.setLevel);
       if (this.lineChartData[1].data.length > 31) {
         this.lineChartData[1].data.shift();
-        this.lineChartLabels.shift();
+        // this.lineChartLabels.shift();
       }
     });
+
+    // interval(1_000).pipe(
+    //   switchMap(() => this.modelParametersService.getModelParameters())
+    // ).subscribe(result => {
+    //   this.lineChartData[1].data.push(result.setLevel);
+    //   if (this.lineChartData[1].data.length > 31) {
+    //     this.lineChartData[1].data.shift();
+    //     // this.lineChartLabels.shift();
+    //   }
+    // });
   }
 
  

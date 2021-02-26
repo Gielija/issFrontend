@@ -186,7 +186,7 @@ export class SimulationComponent implements OnInit {
   }
 
   private createInflowText(inflowX: number, inflowY: number) {
-    let inflowText = new PIXI.Text(this.inflow, { fontFamily: 'Arial', fontSize: this.fontSize, fill: 0x000000, align: 'center' });
+    let inflowText = new PIXI.Text(parseInt(this.inflow, 10), { fontFamily: 'Arial', fontSize: this.fontSize, fill: 0x000000, align: 'center' });
     inflowText.position.set(inflowX - 0.3 * inflowX, inflowY - this.fontSize / 2);
     this.inflowText = inflowText;
     this.stage.addChild(inflowText);
