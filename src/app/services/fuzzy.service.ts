@@ -9,7 +9,7 @@ import { BaseOfRules } from '../classes/baseOfRules';
 })
 export class FuzzyService {
 
-  private url = 'api/fuzzyParameters';
+  private url = 'http://192.168.0.120:5000/fuzzyParameters';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
