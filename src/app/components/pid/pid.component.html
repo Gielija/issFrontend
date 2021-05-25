@@ -10,9 +10,11 @@
         <input [(ngModel)]="pid.ti" placeholder="Ti" type="number" (change)="pickPid()"/>
     </div>
     <div class="form-group">
-      <label>Td:
-    </label>
-        <input [(ngModel)]="pid.td" placeholder="Td" type="number" (change)="pickPid()"/>
+      <mat-form-field class="example-full-width">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Ex. Pizza" [(ngModel)]="pid.td" placeholder="Td" type="number" (change)="pickPid()">
+      </mat-form-field>
+      <!-- <label>Td:</label><input [(ngModel)]="pid.td" placeholder="Td" type="number" (change)="pickPid()"/> -->
       
     </div>
 </div>

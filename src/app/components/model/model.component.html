@@ -5,9 +5,12 @@
         <input [(ngModel)]="modelParameters.baseField" type="number" (change)="pickModelParameters()"/>
     </div>
     <div class="form-group">
-      <label>Poziom zadany:
+      <label>Poziom zadanyyy:
     </label>
-        <input [(ngModel)]="modelParameters.setLevel" type="number" (change)="pickModelParameters()"/>
+        <mat-form-field class="example-full-width">
+          <mat-label>Favorite food</mat-label>
+          <input matInput placeholder="Ex. Pizza" [(ngModel)]="modelParameters.setLevel" type="number" (change)="pickModelParameters()">
+        </mat-form-field>
     </div>  
  </div>
 

@@ -12,6 +12,16 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { ChartComponent } from './components/chart/chart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatInputModule} from '@angular/material/input';
+
+const materialModules = [
+  MatButtonModule,
+  MatToolbarModule,
+  MatInputModule
+];
 
 @NgModule({
   declarations: [
@@ -28,11 +38,13 @@ import { ChartComponent } from './components/chart/chart.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    ...materialModules
   ],
   exports: [
+    ...materialModules
   ],
-  providers: [  ],
-  bootstrap: [AppComponent]
+  providers: [  ]
 })
 export class AppModule { }
