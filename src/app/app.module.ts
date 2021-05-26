@@ -16,11 +16,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
 
 const materialModules = [
   MatButtonModule,
   MatToolbarModule,
-  MatInputModule
+  MatInputModule,
+  MatSliderModule,
+  MatFormFieldModule,
+  MatSelectModule
 ];
 
 @NgModule({
@@ -45,6 +51,7 @@ const materialModules = [
   exports: [
     ...materialModules
   ],
-  providers: [  ]
+  providers: [  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

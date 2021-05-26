@@ -1,15 +1,15 @@
 <div class="model-component">
     <p>Parametry modelu:</p>
     <div class="form-group">
-      <label>Pole podstawy:</label>
-        <input [(ngModel)]="modelParameters.baseField" type="number" (change)="pickModelParameters()"/>
+        <mat-form-field class="example-full-width">
+          <mat-label>Pole podstawy:</mat-label>
+          <input matInput type="number" (change)="pickModelParameters()"/>
+        </mat-form-field>
     </div>
     <div class="form-group">
-      <label>Poziom zadanyyy:
-    </label>
         <mat-form-field class="example-full-width">
-          <mat-label>Favorite food</mat-label>
-          <input matInput placeholder="Ex. Pizza" [(ngModel)]="modelParameters.setLevel" type="number" (change)="pickModelParameters()">
+          <mat-label>Poziom zadany:</mat-label>
+          <input matInput type="number" (change)="pickModelParameters()">
         </mat-form-field>
     </div>  
  </div>

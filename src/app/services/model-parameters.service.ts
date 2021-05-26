@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ModelParametersService {
 
-  private url = 'http://192.168.0.120:5000/modelParameters';
+  private url = 'http://localhost:5000/modelParameters';
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json',
      })

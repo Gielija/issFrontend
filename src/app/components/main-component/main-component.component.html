@@ -2,15 +2,23 @@
     <div class="row">
         <div class="column" style="background-color:#aaa;">
             <div class="form-group">
-                <label for="regulator">Wybierz regulator:</label>
-                <select 
+              <mat-form-field appearance="fill">
+                <mat-label>Regulator</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let type of possibleRegulatorTypes" [value]="type">
+                    {{ type }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+                <!-- <label for="regulator">Wybierz regulator:</label> -->
+                <!-- <select 
                     name="currentRegulator" 
                     id="regulator" 
                     class="form-control"
                     [(ngModel)]="currentRegulator"
                     (change)="onChangeCurrentRegulator()">
                     <option *ngFor="let type of possibleRegulatorTypes" [value]="type">{{ type }}</option>
-                </select>
+                </select> -->
             </div>
           <model>
         </model>
