@@ -17,6 +17,15 @@ export class MainComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public switchRegulator(): void {
+    if(this.currentRegulator == 'PID'){
+      this.currentRegulator = 'FUZZY';
+    } else {
+      this.currentRegulator = 'PID';
+    }
+    console.log("SWITCH");
+  }
+
   public onChangeCurrentRegulator(): void {
     this.modelStateService.setCurrentRegulator(this.currentRegulator);
   }

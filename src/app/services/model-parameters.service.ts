@@ -9,10 +9,7 @@ import { Observable } from 'rxjs';
 export class ModelParametersService {
 
   private url = 'http://localhost:5000/modelParameters';
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json',
-     })
-  };
+  private httpOptions = {responseType: 'text' as 'json'};
   
   constructor(private http: HttpClient) { 
   }

@@ -8,11 +8,8 @@ import { ModelState } from '../classes/modelState';
 })
 export class ModelStateService {
   
-  private url = 'http://192.168.0.120:5000/modelState';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json',
-    responseType: 'text' })
-  };
+  private url = 'http://localhost:5000/modelState';
+  httpOptions = {responseType: 'text' as 'json'};
 
   constructor(private http: HttpClient) { 
   }

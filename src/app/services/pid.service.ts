@@ -8,11 +8,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class PidService {
 
-  private url = 'http://192.168.0.120:5000/pidParameters';
+  private url = 'http://localhost:5000/pidParameters';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  // httpOptions = {
+  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  // };
+
+  httpOptions = {responseType: 'text' as 'json'};
 
   constructor(private http: HttpClient) {  
   }

@@ -1,18 +1,21 @@
 <div class="pid-component">
     <p>Parametry PID:</p>
     <div class="form-group">
-      <label>kp:</label>
-        <input placeholder="kp" [(ngModel)]="pid.kp" type="number" (change)="pickPid()"/>
+        <mat-form-field class="example-full-width">
+          <mat-label>kp</mat-label>
+          <input matInput placeholder="kp" [(ngModel)]="pid.kp" type="number" step="0.1" (change)="pickPid()"/>
+        </mat-form-field>
     </div>
     <div class="form-group">
-      <label>ti:
-    </label>
-        <input placeholder="Ti" [(ngModel)]="pid.ti"  type="number" (change)="pickPid()"/>
+      <mat-form-field class="example-full-width">
+        <mat-label>Ti</mat-label>
+        <input matInput placeholder="Ti" [(ngModel)]="pid.ti"  type="number" step="0.1" (change)="pickPid()"/>
+      </mat-form-field>
     </div>
     <div class="form-group">
       <mat-form-field class="example-full-width">
         <mat-label>Td</mat-label>
-        <input matInput placeholder="Td" [(ngModel)]="pid.td" type="number" (change)="pickPid()">
+        <input matInput placeholder="Td" [(ngModel)]="pid.td" type="number" step="0.1" (change)="pickPid()" />
       </mat-form-field>
       
     </div>
